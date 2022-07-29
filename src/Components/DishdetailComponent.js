@@ -16,7 +16,7 @@ class Dishdetail extends Component {
       return (
         <li key={comment.id}>
           <p>{comment.comment}</p>
-          <p>{comment.author}</p>
+          <p>-- {comment.author}, {comment.date}</p>
         </li>
       );
     });
@@ -58,9 +58,11 @@ class Dishdetail extends Component {
     const commentItem = this.renderComments(dish.comments);
 
     return (
+        <div className='container'>
       <div className='row'>
         {dishItem}
         {commentItem}
+      </div>
       </div>
     );
   }
