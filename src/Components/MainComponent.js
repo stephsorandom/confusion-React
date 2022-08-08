@@ -10,8 +10,8 @@ class Main extends Component {
 
     this.state = {
       dishes: DISHES,
-      selectedDish: null
-      //   comments: null
+      selectedDish: null,
+      comments: null
     };
   }
 
@@ -30,14 +30,14 @@ class Main extends Component {
         <Menu
           dishes={this.state.dishes}
           onClick={(dishId) => this.onDishSelect(dishId)}
-          comments={this.state.dishes.comments}
         />
         <Dishdetail
           dish={
             this.state.dishes.filter(
               (dish) => dish.id === this.state.selectedDish
-            )[0]
-          }
+            )[0]}
+          comments={
+            this.state.dishes.comments}
         />
       </div>
     );
