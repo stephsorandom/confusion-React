@@ -9,6 +9,7 @@ import {
   CardText,
   CardTitle,
 } from 'reactstrap';
+import CommentForm from './CommentForm';
 
 function RenderDish({ dish }) {
   return (
@@ -42,10 +43,13 @@ function RenderComments({comments}) {
                     day: '2-digit',
                   }).format(new Date(comment.date))}
                 </p>
+                
               </li>
+              
             );
           })}
         </ul>
+        <CommentForm />
       </div>
     );
   else return <div></div>;

@@ -152,17 +152,17 @@ class Contact extends Component {
                                     <div className="form-check">
                                         <Label check>
                                             <Control.checkbox model=".agree" name="agree"
-                                                    className="form-check-input"
-                                                    /> {' '}
-                                                    <strong>May we contact you?</strong>
+                                                className="form-check-input"
+                                                /> {' '}
+                                            <strong>May we contact you?</strong>
                                         </Label>
                                     </div>
                                 </Col>
                                 <Col md={{size: 3, offset :1}}>
                                     <Control.select model=".contactType" name="contactType" 
-                                           className="form-control">
-                                           <option>Tel.</option>
-                                           <option>Email</option>
+                                        className="form-control">
+                                        <option>Tel.</option>
+                                        <option>Email</option>
                                     </Control.select>
                                 </Col>
                             </Row>
