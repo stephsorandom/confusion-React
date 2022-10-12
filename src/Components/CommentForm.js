@@ -10,6 +10,14 @@ import {
   ModalHeader,
 } from 'reactstrap';
 
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !val || val.length <= len;
+const minLength = (len) => (val) => val && val.length >= len;
+const isNumber = (val) => !isNaN(Number(val)); //checking to make sure it is a number
+const validEmail = (val) =>
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
+//REGEX rule to check if it meets the critria for a valid email
+
 class Comment extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +34,7 @@ class Comment extends Component {
   }
 
   handleLogin(event) {
-    this.toggleModal();
+    this.toggleMod();
     alert(
       'Username: ' +
         this.username.value +
@@ -43,52 +51,56 @@ class Comment extends Component {
       <>
         <div>
           <Button outline onClick={this.toggleMod}>
-            <span className='fa fa-pencil fa-lg'></span> Sumbit Comment
+            <span className='fa fa-pencil fa-lg'></span> Submit Comment
           </Button>
         </div>
 
         <Modal isOpen={this.state.isModOpen} toggle={this.toggleMod}>
           <ModalHeader toggle={this.toggleMod}>
-            Submit Comment
-            <button
-              type='button'
-              class='close'
-              data-dismiss='modal'
-              aria-label='Close'></button>
+            <b>Submit Comment</b>
           </ModalHeader>
           <ModalBody>
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
-                <Label select htmlFor='rating'>
-                  Rating
+                <Label htmlFor='rating'>
+                  <b>Rating</b>
                 </Label>
-                <Input type='select' name='pick'>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Input>
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'></div>
+                  <select class='custom-select' id='inputGroupSelect01'>
+                    <option selected value='1'>
+                      1
+                    </option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                  </select>
+                </div>
               </FormGroup>
               <FormGroup>
-                <Label htmlFor='password'>Your Name</Label>
+                <Label htmlFor='name'>
+                  <b>Your Name</b>
+                </Label>
                 <Input
                   type='text'
-                  id='password'
-                  name='password'
-                  innerRef={(input) => (this.password = input)}
+                  id='name'
+                  name='name'
+                  placeholder='Your Name'
+                  innerRef={(input) => (this.username = input)}
                 />
               </FormGroup>
               <FormGroup>
-                <Label htmlFor='password'>Comment</Label>
-                <Input
-                  type='text'
-                  id='password'
-                  name='password'
-                  innerRef={(input) => (this.password = input)}
-                />
+                <Label htmlFor='comment'>
+                  <b>Comment</b>
+                </Label>
+                <div class='input-group'>
+                  <textarea
+                    class='form-control'
+                    rows='6'
+                    aria-label='Comment'></textarea>
+                </div>
               </FormGroup>
-
               <Button type='submit' value='submit' color='primary'>
                 Submit
               </Button>

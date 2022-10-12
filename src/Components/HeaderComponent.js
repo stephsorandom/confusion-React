@@ -127,7 +127,7 @@ class Header extends Component {
           <ModalBody>
             <Form onSubmit={this.handleLogin}>
               <FormGroup>
-                <Label htmlFor='username'>Username</Label>
+                <Label htmlFor='usemmrname'>Username</Label>
                 <Input
                   type='text'
                   id='username'
